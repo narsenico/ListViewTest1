@@ -2,5 +2,14 @@
     <string name="app_name">ListViewTest1</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="action_gototabs">Go to tabs</string>
+    <string name="action_addnew">New</string>
     <string name="action_settings">Settings</string>
+    <string name="icon_item_description">icon_item_description</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
 </resources>

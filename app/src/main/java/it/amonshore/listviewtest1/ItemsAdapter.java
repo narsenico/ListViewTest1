@@ -24,6 +24,11 @@ public class ItemsAdapter extends BaseAdapter {
         this.items = items;
     }
 
+    public int add(ItemInfo item) {
+        items.add(item);
+        return items.size() - 1;
+    }
+
     @Override
     public int getCount() {
         return items.size();

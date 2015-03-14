@@ -1,9 +1,12 @@
 package it.amonshore.listviewtest1;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,13 +18,24 @@ import it.amonshore.listviewtest1.data.ItemInfo;
 public class MainActivity extends ActionBarActivity {
 
     private ItemsAdapter adapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listView = (ListView)findViewById(R.id.listView);
+
+        //eventi lista
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                view.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+            }
+        });
+
+       //imposto adapter
         adapter = new ItemsAdapter(this, createItems());
-        ListView listView = (ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
     }
 
@@ -29,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
         ArrayList<ItemInfo> items = new ArrayList<>();
         //items.add(new ItemInfo("Naruto", "Planet Manga"));
         //items.add(new ItemInfo("One Piece", "Star Comics"));
-        for (int ii=0; ii<100; ii++) {
+        for (int ii=0; ii<2; ii++) {
             items.add(new ItemInfo("Item" + ii, "Editor" + ii));
         }
         return items;
@@ -54,7 +68,19 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
-        return super.onOptionsItemSelected(item);
+        //nuovo elemento
+        else if (id == R.id.action_addnew) {
+            int pos = adapter.add(new ItemInfo("Item" + adapter.getCount(), "Editor" + adapter.getCount()));
+            adapter.notifyDataSetChanged();
+            listView.setSelection(pos);
+            return true;
+        //vai a TabbedActivity
+        } else if (id == R.id.action_gototabs) {
+            Intent intent = new Intent(this, TabbedActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 }
