@@ -3,16 +3,14 @@ package it.amonshore.listviewtest1;
 import java.util.Locale;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +56,10 @@ public class TabbedActivity extends ActionBarActivity {
 
             @Override
             public void onPageSelected(int i) {
-                TabbedActivity.this.setTitle("TAB " + i);
+//                int cur = mViewPager.getCurrentItem();
+//                PlaceholderFragment page = (PlaceholderFragment)getSupportFragmentManager()
+//                        .findFragmentByTag("android:switcher:" + R.id.pager + ":" + cur);
+//                TabbedActivity.this.setTitle(page.getTitle());
             }
 
             @Override
@@ -149,10 +150,22 @@ public class TabbedActivity extends ActionBarActivity {
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
+            fragment.title = "title " + sectionNumber;
             return fragment;
         }
 
+        private String title;
+        private String getTitle() {
+            return title;
+        }
+
         public PlaceholderFragment() {
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setHasOptionsMenu(true);
         }
 
         @Override
@@ -161,8 +174,24 @@ public class TabbedActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_tabbed, container, false);
             TextView textView = (TextView)rootView.findViewById(R.id.section_label);
             Bundle args = getArguments();
-            textView.setText("TAB " + args.getInt(ARG_SECTION_NUMBER));
+            textView.setText("tab " + args.getInt(ARG_SECTION_NUMBER));
             return rootView;
+        }
+
+        @Override
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+            Bundle args = getArguments();
+            switch (args.getInt(ARG_SECTION_NUMBER)) {
+                case 1:
+                    inflater.inflate(R.menu.menu_tabpage_1, menu);
+                    break;
+                case 2:
+                    inflater.inflate(R.menu.menu_tabpage_2, menu);
+                    break;
+                case 3:
+                    inflater.inflate(R.menu.menu_tabpage_3, menu);
+                    break;
+            }
         }
     }
 

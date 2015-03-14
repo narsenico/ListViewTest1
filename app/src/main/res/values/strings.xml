@@ -7,7 +7,9 @@
     <string name="action_settings">Settings</string>
     <string name="icon_item_description">icon_item_description</string>
     <string name="title_activity_tabbed">TabbedActivity</string>
-
+    <string name="action_tabpage_add">Add</string>
+    <string name="action_tabpage_edit">Edit</string>
+    <string name="action_tabpage_delete">Delete</string>
 
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
