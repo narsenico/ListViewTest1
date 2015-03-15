@@ -19,7 +19,15 @@
         <activity
             android:name=".TabbedActivity"
             android:label="@string/title_activity_tabbed"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".ItemEditorActivity"
+            android:label="@string/title_activity_item_editor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.amonshore.listviewtest1.MainActivity" />
         </activity>
     </application>
 

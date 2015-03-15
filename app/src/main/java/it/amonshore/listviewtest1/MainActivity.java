@@ -1,5 +1,6 @@
 package it.amonshore.listviewtest1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -16,6 +17,9 @@ import it.amonshore.listviewtest1.data.ItemInfo;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    public final int ACTION_ITEM_ADD = 10001;
+    public final int ACTION_ITEM_EDIT = 10002;
 
     private ItemsAdapter adapter;
     private ListView listView;
@@ -70,9 +74,12 @@ public class MainActivity extends ActionBarActivity {
         }
         //nuovo elemento
         else if (id == R.id.action_addnew) {
-            int pos = adapter.add(new ItemInfo("Item" + adapter.getCount(), "Editor" + adapter.getCount()));
-            adapter.notifyDataSetChanged();
-            listView.setSelection(pos);
+//            int pos = adapter.add(new ItemInfo("Item" + adapter.getCount(), "Editor" + adapter.getCount()));
+//            adapter.notifyDataSetChanged();
+//            listView.setSelection(pos);
+            Intent intent = new Intent(this, ItemEditorActivity.class);
+            //nel caso passare parametri con putExtra()
+            startActivityForResult(intent, ACTION_ITEM_ADD);
             return true;
         //vai a TabbedActivity
         } else if (id == R.id.action_gototabs) {
@@ -81,6 +88,18 @@ public class MainActivity extends ActionBarActivity {
             return true;
         } else {
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && requestCode == ACTION_ITEM_ADD) {
+            //data.get...
+            int pos = adapter.add(new ItemInfo("Item" + adapter.getCount(), "Editor" + adapter.getCount()));
+            adapter.notifyDataSetChanged();
+            listView.setSelection(pos);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }
