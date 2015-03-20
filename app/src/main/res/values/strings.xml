@@ -11,9 +11,14 @@
     <string name="action_tabpage_edit">Edit</string>
     <string name="action_tabpage_delete">Delete</string>
     <string name="action_save">Save</string>
+    <string name="action_remove">Remove</string>
 
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_item_editor">ItemEditorActivity</string>
+
+    <string name="editor_name">Name</string>
+    <string name="editor_notes">Notes</string>
+    <string name="editor_number">Number</string>
 </resources>

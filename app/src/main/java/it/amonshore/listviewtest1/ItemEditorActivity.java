@@ -1,10 +1,16 @@
 package it.amonshore.listviewtest1;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import it.amonshore.listviewtest1.data.ItemInfo;
 
 
 public class ItemEditorActivity extends ActionBarActivity {
@@ -32,11 +38,22 @@ public class ItemEditorActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
-            setResult(Activity.RESULT_OK);
+            Intent intent = new Intent();
+
+            EditText txtNumber = (EditText)findViewById(R.id.txt_number);
+            EditText txtName = (EditText)findViewById(R.id.txt_name);
+            EditText txtNotes = (EditText)findViewById(R.id.txt_notes);
+
+            intent.putExtra(ItemInfo.PAR_NUMBER, Integer.parseInt(txtNumber.getText().toString()) );
+            intent.putExtra(ItemInfo.PAR_NAME, txtName.getText().toString());
+            intent.putExtra(ItemInfo.PAR_NOTES, txtNotes.getText().toString());
+
+            setResult(Activity.RESULT_OK, intent);
             finish();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

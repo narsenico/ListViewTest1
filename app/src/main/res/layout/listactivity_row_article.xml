@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="200dp"
-    android:background="@android:color/background_light"
+    android:layout_width="match_parent" android:layout_height="100dp"
+    android:background="@drawable/listitem_bkg"
     android:padding="10dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon_item"
-        android:minHeight="50dp"
-        android:minWidth="50dp"
-        android:contentDescription="@string/icon_item_description"
-        android:src="@mipmap/ic_launcher" />
-
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/txt_item_name"
-        android:layout_toEndOf="@id/icon_item"
-        android:layout_alignBottom="@+id/icon_item"
-        android:layout_alignTop="@+id/icon_item" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/txt_item_editor"
-        android:layout_toRightOf="@+id/txt_item_number"
-        android:layout_below="@+id/txt_item_name" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="30"
-        android:id="@+id/txt_item_number"
-        android:layout_alignParentBottom="true"
+        android:text="Large Text"
+        android:id="@+id/lbl_name"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/icon_item"
-        android:layout_toLeftOf="@+id/txt_item_name"
-        android:layout_toStartOf="@+id/txt_item_name"
-        android:background="@drawable/shape_rounded_red"
-        android:textColor="#ffffffff"
-        android:gravity="center" />
+        android:layout_toLeftOf="@+id/txt_number"
+        android:layout_toStartOf="@+id/txt_number"
+        android:gravity="center_vertical" />
 
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="New Text"
+        android:id="@+id/txt_number"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/lbl_name"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/sound"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textIsSelectable="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/txt_notes"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/txt_number"
+        android:layout_toStartOf="@+id/txt_number"
+        android:layout_alignBottom="@+id/txt_number"
+        android:layout_below="@+id/lbl_name"
+        android:gravity="center_vertical" />
 </RelativeLayout>
