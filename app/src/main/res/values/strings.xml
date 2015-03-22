@@ -21,4 +21,5 @@
     <string name="editor_name">Name</string>
     <string name="editor_notes">Notes</string>
     <string name="editor_number">Number</string>
+    <string name="title_activity_my_list">MyListActivity</string>
 </resources>
