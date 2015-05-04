@@ -4,25 +4,29 @@
     android:background="@android:color/background_light"
     android:padding="10dp">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentLeft="true"
-        android:id="@+id/ll_text">
+        android:id="@+id/img_item_icon"
+        android:contentDescription="@string/item_icon_descr"
+        android:cropToPadding="true"
+        android:minWidth="50dp"
+        android:minHeight="50dp"
+        android:src="@drawable/ic_eee" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/txt_item_name" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/txt_item_name"
+        android:elegantTextHeight="false"
+        android:layout_toEndOf="@id/img_item_icon" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/txt_item_editor" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/txt_item_editor"
+        android:layout_below="@+id/img_item_icon" />
+
 </RelativeLayout>
