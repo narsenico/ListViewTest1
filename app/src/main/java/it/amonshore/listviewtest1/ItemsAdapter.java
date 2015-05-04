@@ -24,6 +24,11 @@ public class ItemsAdapter extends BaseAdapter {
         this.items = items;
     }
 
+    public int add(ItemInfo item) {
+        items.add(item);
+        return items.size() - 1;
+    }
+
     @Override
     public int getCount() {
         return items.size();
@@ -46,10 +51,12 @@ public class ItemsAdapter extends BaseAdapter {
         }
 
         ItemInfo item = (ItemInfo)getItem(position);
-        TextView txtName = (TextView)convertView.findViewById(R.id.txt_item_name);
+        TextView txtName = (TextView)convertView.findViewById(R.id.lbl_name);
         txtName.setText(item.getName());
-        TextView txtEditor = (TextView)convertView.findViewById(R.id.txt_item_editor);
-        txtEditor.setText(item.getEditor());
+        TextView txtNotes = (TextView)convertView.findViewById(R.id.txt_notes);
+        txtNotes.setText(item.getNotes());
+        TextView txtNumber = (TextView)convertView.findViewById(R.id.txt_number);
+        txtNumber.setText(Integer.toString(item.getNumber()));
         return convertView;
     }
 }
