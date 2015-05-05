@@ -51,12 +51,12 @@ public class ItemsAdapter extends BaseAdapter {
         }
 
         ItemInfo item = (ItemInfo)getItem(position);
-        TextView txtName = (TextView)convertView.findViewById(R.id.lbl_name);
+        TextView txtName = (TextView)convertView.findViewById(R.id.txt_item_name);
         txtName.setText(item.getName());
-        TextView txtNotes = (TextView)convertView.findViewById(R.id.txt_notes);
+        TextView txtNotes = (TextView)convertView.findViewById(R.id.txt_item_editor);
         txtNotes.setText(item.getNotes());
-        TextView txtNumber = (TextView)convertView.findViewById(R.id.txt_number);
-        txtNumber.setText(Integer.toString(item.getNumber()));
+//        TextView txtNumber = (TextView)convertView.findViewById(R.id.txt_number);
+//        txtNumber.setText(Integer.toString(item.getNumber()));
         return convertView;
     }
 }

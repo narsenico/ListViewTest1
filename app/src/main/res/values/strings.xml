@@ -4,4 +4,21 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="item_icon_descr">item icon</string>
+    <string name="editor_number">Number</string>
+    <string name="editor_name">Name</string>
+    <string name="editor_notes">Notes</string>
+    <string name="action_save">Save</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_addnew">New</string>
+    <string name="action_gototabs">Tabs</string>
+    <string name="action_tabpage_add">Add</string>
+    <string name="action_tabpage_edit">Edit</string>
+    <string name="action_tabpage_delete">Delete</string>
+    <string name="title_activity_tabbed">Tabbed</string>
+    <string name="title_activity_item_editor">Editor</string>
+    <string name="title_activity_my_list">List</string>
+    <string name="title_section1">Sec 1</string>
+    <string name="title_section2">Sec 2</string>
+    <string name="title_section3">Sec 3</string>
+    <string name="title_activity_settings">Settings</string>
 </resources>

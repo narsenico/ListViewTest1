@@ -2,6 +2,8 @@ package it.amonshore.listviewtest1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,17 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // ... ensures that your application is properly initialized with default settings
+        //false -> When false, the system sets the default values only if this method has never been called in the past
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
+        TextView txtView = (TextView)findViewById(R.id.textView);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        if (sp.getBoolean(SettingsActivity.KEY_PREF_AUTOSAVE, false)) {
+            txtView.setText("auto save");
+        }
+
         listView = (ListView)findViewById(R.id.listView);
 
 //        //eventi lista
@@ -114,6 +128,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
         //nuovo elemento
